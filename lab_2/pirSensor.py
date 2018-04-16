@@ -11,19 +11,19 @@ CONST_OUTPUT = 11
 GPIO.setup(CONST_OUTPUT,GPIO.OUT,initial=GPIO.HIGH)
 GPIO.setup(CONST_INPUT,GPIO.IN)
 
-GPIO.output(CONST_OUTPUT,True)
+GPIO.output(CONST_OUTPUT)
 GPIO.input(CONST_INPUT)
 #Define pin 3 as an output pin
 #Define pin 11 as an input pin
 
 while True:
     sensor = GPIO.input(CONST_INPUT)
-    if (sensor == True):
+    if (sensor == False):
         print ("No intruders", sensor)
         #Turns off the LED
         time.sleep(1.5)
 
-    elif (sensor ==  False):
+    elif (sensor ==  True):
         print ("Intruder detected", sensor)
         #Turns on the LED
         time.sleep(1.5)
