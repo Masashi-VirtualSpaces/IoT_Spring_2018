@@ -8,7 +8,7 @@ GPIO.setmode(GPIO.BOARD)
 CONST_INPUT = 3
 CONST_OUTPUT = 11
 
-GPIO.output(CONST_OUTPUT)
+GPIO.output(CONST_OUTPUT,True)
 GPIO.input(CONST_INPUT)
 #Define pin 3 as an output pin
 #Define pin 11 as an input pin
