@@ -5,8 +5,8 @@ import time
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
 
-CONST_INPUT = 3
-CONST_OUTPUT = 11
+CONST_INPUT = 11
+CONST_OUTPUT = 3
 
 GPIO.setup(CONST_OUTPUT,GPIO.OUT,initial=GPIO.HIGH)
 GPIO.setup(CONST_INPUT,GPIO.IN)
