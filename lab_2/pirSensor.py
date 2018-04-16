@@ -22,8 +22,10 @@ while True:
         print ("No intruders", sensor)
         #Turns off the LED
         time.sleep(1.5)
+        GPIO.output(CONST_OUTPUT,False)
 
     elif (sensor ==  True):
         print ("Intruder detected", sensor)
+        GPIO.output(CONST_OUTPUT,True)
         #Turns on the LED
         time.sleep(1.5)
