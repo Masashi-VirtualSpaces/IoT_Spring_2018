@@ -11,14 +11,14 @@ params = urllib.urlencode({'field8':sensor, 'key':key}) #Parameters channel fiel
 headers = {"Content-typZZe":"application/x-www-form-    urlencoded","Accept":"text/plain"}
 conn = httplib.HTTPConnection("api.thingspeak.com:80")
 try: #Sending to ThingSpeak
-	conn.request("POST", "/update", params, headers)
-	response = conn.getresponse()
-	print (sensor)
-	#print (response.status, response.reason)
-	data = response.read()
-	conn.close()
+conn.request("POST", "/update", params, headers)
+response = conn.getresponse()
+print (sensor)
+#print (response.status, response.reason)
+data = response.read()
+conn.close()
 except:
-	print ("connection failed")
+print ("connection failed")
 
 
 
