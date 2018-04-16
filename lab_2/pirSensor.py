@@ -2,6 +2,26 @@
 import RPi.GPIO as GPIO
 import time
 
+
+import httplib, urllib
+
+key = 'A86H9XNAIHMD6FC8' #write APIkey from ThingSpeak
+
+params = urllib.urlencode({'field8':sensor, 'key':key}) #Parameters channel field and data sent
+	headers = {"Content-typZZe":"application/x-www-form-    urlencoded","Accept":"text/plain"}
+	conn = httplib.HTTPConnection("api.thingspeak.com:80")
+    try: #Sending to ThingSpeak
+		conn.request("POST", "/update", params, headers)
+		response = conn.getresponse()
+		print (sensor)
+		#print (response.status, response.reason)
+		data = response.read()
+		conn.close()
+	except:
+		print ("connection failed")
+
+    
+
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
 
