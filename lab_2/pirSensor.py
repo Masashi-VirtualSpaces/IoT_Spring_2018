@@ -2,14 +2,9 @@
 import RPi.GPIO as GPIO
 import time
 
-
 import httplib, urllib
 
 key = 'A86H9XNAIHMD6FC8' #write APIkey from ThingSpeak
-
-
-
-
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
@@ -19,11 +14,6 @@ CONST_OUTPUT = 3
 
 GPIO.setup(CONST_OUTPUT,GPIO.OUT,initial=GPIO.HIGH)
 GPIO.setup(CONST_INPUT,GPIO.IN)
-
-#GPIO.output(CONST_OUTPUT,True)
-#GPIO.input(CONST_INPUT)
-#Define pin 3 as an output pin
-#Define pin 11 as an input pin
 
 while True:
     sensor = GPIO.input(CONST_INPUT)
