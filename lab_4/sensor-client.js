@@ -46,6 +46,7 @@ function deviceConnect() {
          }
       });
 }
+deviceConnect();
 console.log("Device registered...");
 
 thingShadows.on('connect', function() {
