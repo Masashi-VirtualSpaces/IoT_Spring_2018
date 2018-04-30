@@ -36,7 +36,7 @@ console.log("Masashi Test outout");
 
 function deviceConnect() {
   console.log("attempting to register device...");
-   thingShadows.register(thingName, {
+   thingShadows.register(myThingName, {
          ignoreDeltas: true
       },
       function(err, failedTopics) {
