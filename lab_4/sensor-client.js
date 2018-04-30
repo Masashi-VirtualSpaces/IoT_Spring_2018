@@ -6,7 +6,7 @@ var thingShadows = awsIot.thingShadow({
    keyPath: './Keys/c6dd9f296c-private.pem.key',   // path of private key
   certPath: './Keys/c6dd9f296c-certificate.pem.crt', // path of certificate
     caPath: './rootCA.pem',  // path of root file
-  clientId: Raspberrypi_Schafer,
+  clientId: "Raspberrypi_Schafer",
     region: 'us-west-2'  // your region
 });
 
