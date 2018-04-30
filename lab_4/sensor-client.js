@@ -31,6 +31,9 @@ button = new Gpio(7, 'in', 'both');
 // json data for dynamoDB
 var msg = "{\"key\":\"value\"}";
 
+
+console.log("Masashi Test outout");
+
 thingShadows.on('connect', function() {
   console.log("Connected...");
   console.log("Registering...");
@@ -86,7 +89,7 @@ thingShadows.on('connect', function() {
     });
 
 
-  console.log("Hello I am here");
+
   //Watch for motion detection. high for any movement
   button.watch(function(err, value) {
    console.log("Movement detected ")
