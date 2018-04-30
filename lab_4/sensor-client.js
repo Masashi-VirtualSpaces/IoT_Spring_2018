@@ -34,6 +34,20 @@ var msg = "{\"key\":\"value\"}";
 
 console.log("Masashi Test outout");
 
+function deviceConnect() {
+  console.log("attempting to register device...");
+   thingShadows.register(thingName, {
+         ignoreDeltas: true
+      },
+      function(err, failedTopics) {
+         if (isUndefined(err) && isUndefined(failedTopics)) {
+            console.log('Device thing registered.');
+            genericOperation('update', generateRandomState());
+         }
+      });
+}
+console.log("Device registered...");
+
 thingShadows.on('connect', function() {
   console.log("Connected...");
   console.log("Registering...");
