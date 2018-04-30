@@ -116,3 +116,5 @@ thingShadows.on('connect', function() {
   });
 
 });
+
+thingShadow.On();
