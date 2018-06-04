@@ -21,7 +21,7 @@ mythingstate["state"]["reported"]["ip"] = networkInterfaces['wlan0'][0]['address
 // You can use any gpio pin
 // install npm button library first
 var Gpio = require('onoff').Gpio;
-var button = new Gpio(4, 'in', 'both');
+button = new Gpio(4, 'in', 'both');
 // json data for dynamoDB
 var msg = "{\"key\":\"value\"}";
 console.log("Setup variables defined...");
@@ -79,7 +79,7 @@ thingShadows.on('connect', function () {
         delete mythingstate['version']; //Cleanup to post to AWS
         mythingstate["state"]["reported"]["button"] = value;
         buttonStateResponse = thingShadows.update(myThingName,mythingstate);
-        thingShadows.publish('topic/test', value.toString()); 
+        thingShadows.publish('topic/test', value.toString());
         //publish message
         console.log("Update:" + buttonStateResponse);
     });
