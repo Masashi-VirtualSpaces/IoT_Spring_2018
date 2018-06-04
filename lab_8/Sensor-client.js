@@ -1,12 +1,12 @@
 var awsIot = require('aws-iot-device-sdk');
 var myThingName = 'yourthingname;
 var thingShadows = awsIot.thingShadow({
-    keyPath: './yourprivatekey.pem.key', // path of private key
-    certPath: './yourcertificate.pem.crt', // path of certificate
-    caPath: './rootCA.pem', // path of root file
-    clientId: myThingName,
+    keyPath: '../../Keys/7529fdeb09-private.pem.key', // path of private key
+    certPath: '../../Keys/7529fdeb09-certificate.pem.crt', // path of certificate
+    caPath: '../../Keys/CA.pem', // path of root file
+    clientId: Raspberrypi_Singh_Schafer,
     region: 'us-west-2', // your region
-    host: ‘yourRESTAPI’
+    host: 'a36blmcb965lyg.iot.us-west-2.amazonaws.com'
 });
 mythingstate = {
     "state": {
@@ -16,13 +16,12 @@ mythingstate = {
     }
 }
 var networkInterfaces = require('os').networkInterfaces();
-mythingstate["state"]["reported"]["ip"] =
-    networkInterfaces['wlan0'][0]['address'];
+mythingstate["state"]["reported"]["ip"] = networkInterfaces['wlan0'][0]['address'];
 // PIR sensor connected to pin 7
 // You can use any gpio pin
 // install npm button library first
-var Gpio = require('onoff').Gpio,
-    button = new Gpio(4, 'in', 'both');
+var Gpio = require('onoff').Gpio;
+var button = new Gpio(4, 'in', 'both');
 // json data for dynamoDB
 var msg = "{\"key\":\"value\"}";
 thingShadows.on('connect', function () {
@@ -30,11 +29,10 @@ thingShadows.on('connect', function () {
     console.log("Registering...");
     thingShadows.register(myThingName);
     // An update right away causes a timeout error, so we wait
-    about 2 seconds
+    //about 2 seconds
     setTimeout(function () {
         console.log("Updating my IP address...");
-        clientTokenIP = thingShadows.update(myThingName,
-            mythingstate);
+        clientTokenIP = thingShadows.update(myThingName, mythingstate);
         console.log("Update:" + clientTokenIP);
     }, 2500);
     // Code below just logs messages for info/debugging
@@ -55,7 +53,7 @@ thingShadows.on('connect', function () {
         });
     thingShadows.on('timeout',
         function (thingName, clientToken) {
-            console.log('received timeout for ' + clientToken)
+            console.log('received timeout for ' + clientToken);
         });
     thingShadows
         .on('close', function () {
@@ -76,13 +74,12 @@ thingShadows.on('connect', function () {
 
     //Watch for motion detection. high for any movement
     button.watch(function (err, value) {
-        console.log("Movement detected ")
+        console.log("Movement detected ");
         delete mythingstate['version']; //Cleanup to post to AWS
-        mythingstate["state"]["reported"]["button"] = value
-        buttonStateResponse = thingShadows.update(myThingName,
-            mythingstate);
-        thingShadows.publish('topic/test', value.toString()); //
-        publish message
+        mythingstate["state"]["reported"]["button"] = value;
+        buttonStateResponse = thingShadows.update(myThingName,mythingstate);
+        thingShadows.publish('topic/test', value.toString()); 
+        //publish message
         console.log("Update:" + buttonStateResponse);
     });
 });
