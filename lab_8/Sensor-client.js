@@ -1,10 +1,10 @@
 var awsIot = require('aws-iot-device-sdk');
-var myThingName = 'yourthingname;
+var myThingName = 'Raspberrypi_Singh_Schafer';
 var thingShadows = awsIot.thingShadow({
     keyPath: '../../Keys/7529fdeb09-private.pem.key', // path of private key
     certPath: '../../Keys/7529fdeb09-certificate.pem.crt', // path of certificate
     caPath: '../../Keys/CA.pem', // path of root file
-    clientId: Raspberrypi_Singh_Schafer,
+    clientId: myThingName,
     region: 'us-west-2', // your region
     host: 'a36blmcb965lyg.iot.us-west-2.amazonaws.com'
 });
@@ -24,6 +24,7 @@ var Gpio = require('onoff').Gpio;
 var button = new Gpio(4, 'in', 'both');
 // json data for dynamoDB
 var msg = "{\"key\":\"value\"}";
+console.log("Setup variables defined...");
 thingShadows.on('connect', function () {
     console.log("Connected...");
     console.log("Registering...");
